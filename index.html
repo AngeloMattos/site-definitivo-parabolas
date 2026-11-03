@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mestre das Parábolas — Quiz da Turma</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="top"><strong>Mestre das Parábolas</strong><span class="sp"></span><button class="btn sm sec" id="snd"></button><button class="btn sm sec" id="home">Início</button></header>
+<main>
+<section id="s-home"><div class="hero"><div><h1>MESTRE DAS PARÁBOLAS</h1><p class="sub">Domine o foco, descubra o vértice e conquiste o gráfico!</p>
+<h2>Quem é você?</h2><div class="who"><button class="btn big" id="bProf"><b>Sou apresentador</b><small>Crio a turma e acompanho o ranking</small></button><button class="btn big" id="bAluno"><b>Sou aluno</b><small>Entro com meu nome e o código da turma</small></button></div>
+<ol class="mu"><li>O apresentador cria a turma e mostra o QR Code.</li><li>Os alunos entram com nome e código.</li><li>O apresentador inicia e acompanha o ranking ao vivo.</li></ol></div>
+<svg viewBox="0 0 200 110" class="gsv" role="img" aria-label="Parábola desenhada no plano cartesiano"><line class="ax" x1="0" y1="95" x2="200" y2="95"/><line class="ax" x1="100" y1="0" x2="100" y2="110"/><path class="cv an" d="M20 8Q100 160 180 8"/></svg></div></section>
+
+<section id="s-setup" hidden><h2>Ranking em tempo real</h2><div class="card">
+<p>Para os celulares dos alunos aparecerem no seu ranking, o jogo usa um banco gratuito do Firebase. Faça uma única vez:</p>
+<ol><li>Entre em <b>console.firebase.google.com</b> e crie um projeto.</li><li>Em <b>Realtime Database</b>, crie o banco (modo de teste).</li>
+<li>Na aba <b>Regras</b>, cole <code>{"rules":{"turmas":{".read":true,".write":true}}}</code> e publique.</li><li>Copie a URL do banco (termina em firebaseio.com ou firebasedatabase.app) e cole aqui:</li></ol>
+<label>URL do banco <input id="dbUrl" placeholder="https://seu-projeto-default-rtdb.firebaseio.com"></label>
+<div class="row"><button class="btn" id="dbSave">Salvar e criar turma</button><button class="btn sec" id="dbTest">Só testar neste computador</button></div><p id="dbMsg" class="r" role="alert"></p></div></section>
+
+<section id="s-prof" hidden><div class="two"><div class="card"><h2>Entrada da turma</h2><p>Código da turma</p><p class="code" id="pCode"></p><div id="pqr"></div>
+<p>Link: <a id="pLink" style="color:var(--cy);word-break:break-all"></a></p><p id="pWarn" class="r"></p>
+<div class="row"><button class="btn sm sec" id="pNew">Nova turma</button><button class="btn sm sec" id="pCfg">Banco de dados</button></div></div>
+<div class="card"><div class="row"><span id="pEst" class="pill"></span><span id="pCount" class="mu"></span></div>
+<div class="row"><button class="btn big2b" id="pStart">Iniciar quiz</button><button class="btn sec big2b" id="pEnd" hidden>Encerrar quiz</button><button class="btn sec" id="pHide">Esconder pódio</button><button class="btn big2b" id="pRev" hidden>Revelar</button></div>
+<h2>Ranking ao vivo</h2><div id="pPod" aria-live="polite"></div><p id="pHint" class="mu"></p><ol id="pRank" class="rank"></ol></div></div></section>
+
+<section id="s-join" hidden><h2>Entrar na turma</h2><div class="card"><label>Seu nome e sobrenome <input id="jName" maxlength="20" autocomplete="off"></label>
+<label>Código da turma <input id="jCode" maxlength="8" autocomplete="off" style="text-transform:uppercase"></label>
+<button class="btn big2b" id="jGo">Entrar </button><p id="jMsg" class="r" role="alert"></p></div></section>
+
+<section id="s-lobby" hidden><div class="card center"><h2>Olá, <span id="lName"></span>! </h2><div class="spin" aria-hidden="true"></div><p class="big2">Aguardando o apresentador iniciar o quiz…</p><p class="mu">Não feche esta página. O quiz começa sozinho.</p></div></section>
+
+<section id="s-quiz" hidden><div class="card"><div class="row"><span id="qProg" class="big2"></span><span class="sp"></span><span class="big2"><b id="qSc">0</b> pontos</span></div><div class="bar"><i id="qBar"></i></div><div id="qBox"></div></div></section>
+
+<section id="s-fim" hidden><div class="card center"><h2>Quiz concluído!</h2><p id="fRes" class="big2"></p><p id="fPos" class="big2 g"></p><h3>Top 5 da turma</h3><ol id="fRank" class="rank"></ol></div></section>
+</main><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script src="script.js"></script></body></html>
